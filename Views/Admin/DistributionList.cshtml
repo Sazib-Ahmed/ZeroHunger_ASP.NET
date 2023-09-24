@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "DistributionList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h2>Distribution List</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Distribution ID</th>
+            <th>Address</th>
+            <th>Time</th>
+            <th>Beneficiary Count</th>
+            <th>Collect Request ID</th>
+            <th>Assigned Employees</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var distribution in Model)
+        {
+            <tr>
+                <td>@distribution.id</td>
+                <td>@distribution.address</td>
+                <td>@distribution.time</td>
+                <td>@distribution.beneficiary_count</td>
+                <td>@distribution.collect_request_id</td>
+                <td>@{var count = 0;
+                    foreach (var detail in distribution.food_distribution_details)
+                    {
+                        if (distribution.id == detail.food_distribution_id)
+                        {
+                            <span>@detail.employee_id</span>
+                            count+=1;
+                        }
+
+                    }
+                    if(count==0)
+                    {
+                        <span> Employee not assigned </span >
+
+                    }
+
+                    }
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

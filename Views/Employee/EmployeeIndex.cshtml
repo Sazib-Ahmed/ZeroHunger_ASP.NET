@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
+}
+@if (TempData["Msg"] != null)
+{
+    <p class="alert alert-info">@TempData["Msg"]</p>
+}
+
+
+
+
+<h2>Collect Requests</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Request ID</th>
+            <th>Food Donor ID</th>
+            <th>Max Preservation Time</th>
+            <th>Preferred Pickup Time</th>
+            <th>Status</th>
+            <th>Address</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var request in Model)
+        {
+
+            foreach (var requestdetail in request.collect_reqest_details)
+            {
+                if (requestdetail.employee_id == (int)Session["id"])
+                {
+                    <tr>
+                        <td>@request.id</td>
+                        <td>@request.food_donor_id</td>
+                        <td>@request.expire_time</td>
+                        <td>@request.preferred_time</td>
+                        <td>@request.status</td>
+                        <td>@request.address</td>
+                        <td>
+                            @if (request.status.Trim() == "Collecting")
+                            {
+                                <a class="btn btn-success" href="@Url.Action("EmployeeCollected", "Employee", new { requestId = request.id })">Collected</a>
+                            }
+                            else if (request.status.Trim() == "Completed")
+                            {
+                                <span> NO action available</span>
+
+                            }
+                        </td>
+                    </tr>
+                }
+
+
+
+            }
+
+
+
+
+        }
+    </tbody>
+</table>
+

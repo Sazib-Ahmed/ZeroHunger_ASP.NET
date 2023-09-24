@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="zerohungerModelStoreContainer" CdmEntityContainer="zerohungerEntities3">
+    <EntitySetMapping Name="Admins">
+      <EntityTypeMapping TypeName="zerohungerModel.Admin">
+        <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="collect_reqest_details">
+      <EntityTypeMapping TypeName="zerohungerModel.collect_reqest_details">
+        <MappingFragment StoreEntitySet="collect_reqest_details">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="collect_request_id" ColumnName="collect_request_id" />
+          <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="collect_request">
+      <EntityTypeMapping TypeName="zerohungerModel.collect_request">
+        <MappingFragment StoreEntitySet="collect_request">
+          <ScalarProperty Name="preferred_time" ColumnName="preferred_time" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="food_description" ColumnName="food_description" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="expire_time" ColumnName="expire_time" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="food_donor_id" ColumnName="food_donor_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="employees">
+      <EntityTypeMapping TypeName="zerohungerModel.employee">
+        <MappingFragment StoreEntitySet="employee">
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="nid" ColumnName="nid" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="food_distribution">
+      <EntityTypeMapping TypeName="zerohungerModel.food_distribution">
+        <MappingFragment StoreEntitySet="food_distribution">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="time" ColumnName="time" />
+          <ScalarProperty Name="beneficiary_count" ColumnName="beneficiary_count" />
+          <ScalarProperty Name="collect_request_id" ColumnName="collect_request_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="food_distribution_details">
+      <EntityTypeMapping TypeName="zerohungerModel.food_distribution_details">
+        <MappingFragment StoreEntitySet="food_distribution_details">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="food_distribution_id" ColumnName="food_distribution_id" />
+          <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="food_donor">
+      <EntityTypeMapping TypeName="zerohungerModel.food_donor">
+        <MappingFragment StoreEntitySet="food_donor">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

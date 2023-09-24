@@ -1,0 +1,71 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zero Hunger</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+@if (TempData["Msg"] != null)
+{
+    <p class="alert alert-info">@TempData["Msg"]</p>
+}
+<div class="container">
+    <div class="jumbotron text-center bg-dark text-white">
+        <h1 class="display-4">Zero Hunger</h1>
+        <p class="lead">Feeding the Deprived, One Meal at a Time</p>
+        <hr class="my-4">
+        <p class="lead">"No one should go to bed hungry. Together, we can make a difference."</p>
+        <a class="btn btn-primary btn-lg" href="/FoodDonor/FoodDonorIndex" role="button">Donate Now</a>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card bg-light mb-3">
+                <div class="card-body">
+                    <h3 class="card-title">About Zero Hunger</h3>
+                    <p class="card-text">Zero Hunger is an NGO dedicated to reducing food waste and feeding deprived people, especially children, in Dhaka city. We believe that no food should go to waste when there are hungry people in our community.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card bg-light mb-3">
+                <div class="card-body">
+                    <h3 class="card-title">How You Can Help</h3>
+                    <p class="card-text">You can make a difference by donating surplus food from your restaurant, office programs, or buffets. Together, we can ensure that this food reaches those in need and helps combat hunger.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="donate-section" class="card bg-light mb-3">
+        <div class="card-body">
+            <h3 class="card-title">Donate Food</h3>
+            <p class="card-text">If you are a restaurant or have surplus food to donate, please open a collect request from your dashboard with the maximum time you can preserve the food. We will collect it before it gets wasted and distribute it to those in need.</p>
+            <a class="btn btn-primary" href="/FoodDonor/FoodDonorIndex" role="button">Donate Now</a>
+        </div>
+    </div>
+
+    <div id="login-section" class="card bg-light mb-3">
+        <div class="card-body">
+            <h3 class="card-title">Login or Register</h3>
+            <p class="card-text">If you are an admin, employee, or food donor, you can log in or register below to access your dashboard and contribute to our mission.</p>
+            <div class="row">
+
+                <div class="col-lg-4">
+                    <a class="btn btn-primary btn-block" href="/FoodDonor/FoodDonorIndex" role="button">Food Donor Login</a>
+                </div>
+                <br>
+                <div class="col-lg-4">
+                    <a class="btn btn-primary btn-block" href="/Employee/EmployeeIndex" role="button">Employee Login</a>
+                </div>
+                <br>
+                <div class="col-lg-4">
+                    <a class="btn btn-primary btn-block" href="/Admin/AdminIndex" role="button">Admin Login</a>
+                </div>
+
+            </div>
+            <p class="mt-3">Don't have an account?  <a href="Home/Registration">Register</a>.</p>
+        </div>
+    </div>
+</div>

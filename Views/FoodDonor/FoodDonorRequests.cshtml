@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "Requests";
+    Layout = "~/Views/Shared/_FoodDonorLayout.cshtml";
+}
+
+<h2>All Requests</h2>
+@if (TempData["Msg"] != null)
+{
+    <p class="alert alert-info">@TempData["Msg"]</p>
+}
+<a href="/FoodDonor/CollectRequest" class="btn btn-success">Create</a>
+<br>
+<br>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Food Description</th>
+            <th>Quantity</th>
+            <th>Expire Time</th>
+            <th>Status</th>
+            <th>Preferred Time</th>
+            <th>Address</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.id</td>
+                <td>@item.food_description</td>
+                <td>@item.quantity</td>
+                <td>@item.expire_time</td>
+                <td>@item.status</td>
+                <td>@item.preferred_time</td>
+                <td>@item.address</td>
+                <td>
+                    <a class="btn btn-danger" href="#" onclick="confirmReject(@item.id)">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<script>
+    function confirmReject(requestId) {
+        if (confirm("Are you sure you want to delete the collect request?")) {
+            window.location.href = "@Url.Action("CollectRequestDelete", "FoodDonor")?requestId=" + requestId;
+        }
+    }
+</script>

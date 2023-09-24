@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "EmployeeFoodDistribution";
+    Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
+}
+
+
+
+
+<h2>Food Distributions</h2>
+
+                <div class="card-header">
+                    
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Distribution ID</th>
+                                <th>Address</th>
+                                <th>Distribution Time</th>
+                                <th>Beneficiary Count</th>
+                                <th>Collect Request ID</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var distribution in Model)
+                            {
+                                foreach (var detail in distribution.food_distribution_details)
+                                {
+                                    if (detail.employee_id == (int)Session["id"])
+                                    {
+                                        <tr>
+                                            <td>@distribution.id</td>
+                                            <td>@distribution.address</td>
+                                            <td>@distribution.time</td>
+                                            <td>@distribution.beneficiary_count</td>
+                                            <td>@distribution.collect_request_id</td>
+                                            <td>@distribution.status</td>
+                                            <td>
+                                                @if (distribution.status.Trim() != "Deliverd")
+                                                {
+                                                    <a class="btn btn-success" href="@Url.Action("EmployeeDistributed", "Employee", new { distributionId = distribution.id })">Delivered</a>
+                                                }
+                                                else
+                                                {
+                                                    <span>No action available</span>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+

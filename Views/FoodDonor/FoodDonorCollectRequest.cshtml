@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "CollectRequest";
+    Layout = "~/Views/Shared/_FoodDonorLayout.cshtml";
+}
+
+<div class="container container-center">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card login-container">
+                <div class="card-body ">
+                    <h2 class="text-center mb-4">Collect Request</h2>
+                    @if (TempData["Msg"] != null)
+                    {
+                        <p class="alert alert-info">@TempData["Msg"]</p>
+                    }
+                    <form method="post">
+                        <div class="form-group">
+                            <label for="foodDescription">Food Description*</label>
+                            <textarea class="form-control input-lg" id="foodDescription" name="food_description" value="@(Model !=null ? Model.food_description : "")" required rows="4"></textarea>
+                            <span class="text-danger">@Html.ValidationMessage("food_description")</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="quantity">Quantity (describable)</label>
+                            <input type="text" class="form-control input-lg" id="quantity"  name="quantity" value="@(Model !=null ? Model.quantity : "")" required>
+                            <span class="text-danger">@Html.ValidationMessage("quantity")</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="expireTime">Expire Time*</label>
+                            <input type="datetime-local" class="form-control" id="expireTime" name="expire_time" value="2023-07-14T12:00" value="@(Model !=null ? Model.expire_time : "")" required>
+                            <span class="text-danger">@Html.ValidationMessage("expire_time")</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="preferredCollectionTime">Preferred Collection Time</label>
+                            <select class="form-control" id="preferredCollectionTime" name="preferred_time" value="@(Model !=null ? Model.preferred_time : "")" required>
+                                <option disabled selected value="Select">Select Time</option>
+                                <option value="08:00-09:00">8:00 am - 9:00 am</option>
+                                <option value="09:00-10:00">9:00 am - 10:00 am</option>
+                                <option value="10:00-11:00">10:00 am - 11:00 am</option>
+                                <option value="11:00-12:00">11:00 am - 12:00 pm</option>
+                                <option value="12:00-13:00">12:00 pm - 1:00 pm</option>
+                                <option value="13:00-14:00">1:00 pm - 2:00 pm</option>
+                                <option value="14:00-15:00">2:00 pm - 3:00 pm</option>
+                                <option value="15:00-16:00">3:00 pm - 4:00 pm</option>
+                                <option value="16:00-17:00">4:00 pm - 5:00 pm</option>
+                                <option value="17:00-18:00">5:00 pm - 6:00 pm</option>
+                                <option value="18:00-19:00">6:00 pm - 7:00 pm</option>
+                                <option value="19:00-20:00">7:00 pm - 8:00 pm</option>
+                                <option value="20:00-21:00">8:00 pm - 9:00 pm</option>
+                                <option value="21:00-22:00">9:00 pm - 10:00 pm</option>
+                            </select>
+                            <span class="text-danger">@Html.ValidationMessage("preferred_time")</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Address*</label>
+                            <input type="text" class="form-control" id="address" name="address" value="@(Model !=null ? Model.address : "")" required>
+                            <span class="text-danger">@Html.ValidationMessage("address")</span>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-block">Request</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

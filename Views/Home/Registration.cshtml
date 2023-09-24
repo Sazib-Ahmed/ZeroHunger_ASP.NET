@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Registration";
+}
+@if (TempData["Msg"] != null)
+{
+    <p class="alert alert-info">@TempData["Msg"]</p>
+}
+<div class="container">
+    <div class="jumbotron text-center">
+        <h1 class="display-4">Registration Selection</h1>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <div class="text-center">
+                        <a href="/FoodDonor/FoodDonorRegistration" class="btn btn-primary btn-lg btn-block mb-3">Food Donor</a>
+                        <a href="/Employee/EmployeeRegistration" class="btn btn-primary btn-lg btn-block mb-3">Employee</a>
+                        <div class="text-center">
+                            <p class="text-center mt-3 mb-0">
+                                Already have an account?<a href="/Home/Login" class="btn btn-link">Login</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

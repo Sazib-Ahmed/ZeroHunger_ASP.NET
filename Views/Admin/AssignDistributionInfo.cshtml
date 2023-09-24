@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewBag.Title = "AssignDistributionInfo";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@{
+    bool IsSelected(int empId)
+    {
+        if (ViewBag.SelectedEmployees != null)
+        {
+            var selectedEmployees = ViewBag.SelectedEmployees as List<int>;
+            return selectedEmployees.Contains(empId);
+        }
+        return false;
+    }
+}
+
+<form method="post">
+    <h2>Assign Distribution Info for Food Distribution ID: @ViewBag.FoodDistributionId</h2>
+    <input type="hidden" name="collect_request_id" value="@ViewBag.CollectRequestId" />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Select</th>
+                <th>Employee ID</th>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var emp in Model)
+            {
+                <tr>
+                    <td>
+                        <input type="checkbox" checked="@IsSelected(emp.id)" name="selectedEmployees[]" value="@emp.id" />
+                    </td>
+                    <td>@emp.id</td>
+                    <td>@emp.name</td>
+                    <td>@emp.email</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="form-group">
+        <label for="address">Address:</label>
+        <input type="text" class="form-control" id="address" name="address"  placeholder="Enter Address" />
+        <span class="text-danger">@Html.ValidationMessage("address")</span>
+    </div>
+
+    <div class="form-group">
+        <label for="Distribution">Distribution Time</label>
+        <select class="form-control" id="preferredDistributionTime"  name="time" required>
+            <option disabled selected value="Select">Select Time</option>
+            <option value="08:00-09:00">8:00 am - 9:00 am</option>
+            <option value="09:00-10:00">9:00 am - 10:00 am</option>
+            <option value="10:00-11:00">10:00 am - 11:00 am</option>
+            <option value="11:00-12:00">11:00 am - 12:00 pm</option>
+            <option value="12:00-13:00">12:00 pm - 1:00 pm</option>
+            <option value="13:00-14:00">1:00 pm - 2:00 pm</option>
+            <option value="14:00-15:00">2:00 pm - 3:00 pm</option>
+            <option value="15:00-16:00">3:00 pm - 4:00 pm</option>
+            <option value="16:00-17:00">4:00 pm - 5:00 pm</option>
+            <option value="17:00-18:00">5:00 pm - 6:00 pm</option>
+            <option value="18:00-19:00">6:00 pm - 7:00 pm</option>
+            <option value="19:00-20:00">7:00 pm - 8:00 pm</option>
+            <option value="20:00-21:00">8:00 pm - 9:00 pm</option>
+            <option value="21:00-22:00">9:00 pm - 10:00 pm</option>
+        </select>
+        <span class="text-danger">@Html.ValidationMessage("time")</span>
+    </div>
+
+    <div class="form-group">
+        <label for="beneficiaryCount">Beneficiary Count:</label>
+        <input type="text" class="form-control" id="beneficiary_count" name="beneficiary_count"  placeholder="Enter Beneficiary Count" />
+        <span class="text-danger">@Html.ValidationMessage("beneficiary_count")</span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Assign Distribution Info</button>
+</form>

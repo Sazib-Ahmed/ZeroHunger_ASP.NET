@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@if (TempData["Msg"] != null)
+{
+    <p class="alert alert-info">@TempData["Msg"]</p>
+}
+
+
+<h2>Collect Requests</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Request ID</th>
+            <th>Food Description</th>
+            <th>Quantity</th>
+            <th>Expire Time</th>
+            <th>Status</th>
+            <th>Address</th>
+            <th>Preferred Time</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var request in Model)
+        {
+            <tr>
+                <td>@request.id</td>
+                <td>@request.food_description</td>
+                <td>@request.quantity</td>
+                <td>@request.expire_time</td>
+                <td>@request.status</td>
+                <td>@request.address</td>
+                <td>@request.preferred_time</td>
+                <td>
+                    @if (request.status.Trim() == "Pending")
+                    {
+                        <a class="btn btn-success" href="@Url.Action("AcceptCollectRequest", "Admin", new { requestId = request.id })">Accept</a>
+                        <a class="btn btn-danger" href="#" onclick="confirmReject(@request.id)">Reject</a>
+                    }
+                    else if (request.status.Trim() == "Acceped")
+                    {
+                        <a class="btn btn-danger" href="#" onclick="confirmReject(@request.id)">Reject</a>
+                        <a class="btn btn-warning" href="@Url.Action("AssignEmployee", "Admin", new { requestId = request.id })">Assign Employee</a>
+
+                    }
+                    else if (request.status.Trim() == "Rejected")
+                    {
+                        <a class="btn btn-success" href="@Url.Action("AcceptCollectRequest", "Admin", new { requestId = request.id })">Accept</a>
+                    }
+
+                    else if (request.status.Trim() == "Collecting")
+                    {
+                        <span> Employee is assigned to collcet. </span>
+                        <a class="btn btn-danger" href="#" onclick="confirmReject(@request.id)">Reject</a>
+                    }
+                    else if (request.status.Trim() == "Collected")
+                    {
+                        <span> Ready for Distribution</span>
+                        <a class="btn btn-primary" href="@Url.Action("AssignDistributionInfo", "Admin", new { requestId = request.id })">Assign Distribution Location</a>
+                    }
+                    else if (request.status.Trim() == "Distributing")
+                    {
+                        <span> Employee is assigned to  Distribute.</span>
+                    }
+                    else if (request.status.Trim() == "Completed")
+                    {
+                        <span> No action available.</span>
+                    }
+                    else
+                    {
+                        <a class="btn btn-primary" href="@Url.Action("AcceptCollectRequest", "Admin", new { requestId = request.id })">Accept</a>
+                        <a class="btn btn-danger" href="#" onclick="confirmReject(@request.id)">Reject</a>
+                        <a class="btn btn-warning" href="@Url.Action("AssignEmployee", "Admin", new { requestId = request.id })">Assign Employee</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    function confirmReject(requestId) {
+        if (confirm("Are you sure you want to reject this collect request?")) {
+            window.location.href = "@Url.Action("RejectCollectRequest", "Admin")?requestId=" + requestId;
+        }
+    }
+</script>

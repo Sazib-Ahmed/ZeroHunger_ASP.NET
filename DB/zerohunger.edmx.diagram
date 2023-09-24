@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7f9464af77ac48e1bffdbc892a11506d" Name="Diagram1">
+        <EntityTypeShape EntityType="zerohungerModel.Admin" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="zerohungerModel.collect_reqest_details" Width="1.5" PointX="3" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="zerohungerModel.collect_request" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="zerohungerModel.employee" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="zerohungerModel.food_distribution" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zerohungerModel.food_distribution_details" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="zerohungerModel.food_donor" Width="1.5" PointX="1.5" PointY="12.875" IsExpanded="true" />
+        <AssociationConnector Association="zerohungerModel.FK_Admin_employee" ManuallyRouted="false" />
+        <AssociationConnector Association="zerohungerModel.FK_collect_reqest_details_collect_request" ManuallyRouted="false" />
+        <AssociationConnector Association="zerohungerModel.FK_collect_reqest_details_employee" ManuallyRouted="false" />
+        <AssociationConnector Association="zerohungerModel.FK_collect_request_food_donor" ManuallyRouted="false" />
+        <AssociationConnector Association="zerohungerModel.FK_food_distribution_collect_request" ManuallyRouted="false" />
+        <AssociationConnector Association="zerohungerModel.FK_food_distribution_details_employee" ManuallyRouted="false" />
+        <AssociationConnector Association="zerohungerModel.FK_food_distribution_details_food_distribution" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

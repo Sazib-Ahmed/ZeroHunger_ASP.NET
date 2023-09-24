@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "FoodDonorDonationHistory";
+    Layout = "~/Views/Shared/_FoodDonorLayout.cshtml";
+}
+
+
+
+<h2>Food Donation History</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Request ID</th>
+            <th>Food Description</th>
+            <th>Quantity</th>
+            <th>Expire Time</th>
+            <th>Status</th>
+            <th>Address</th>
+            <th>Preferred Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var request in Model)
+        {
+            <tr>
+                <td>@request.id</td>
+                <td>@request.food_description</td>
+                <td>@request.quantity</td>
+                <td>@request.expire_time</td>
+                <td>@request.status</td>
+                <td>@request.address</td>
+                <td>@request.preferred_time</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
